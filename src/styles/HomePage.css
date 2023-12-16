@@ -1,0 +1,41 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #007bff;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.menu-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.menu-item h3 {
+  color: #007bff;
+}
+
+.menu-item p {
+  margin-bottom: 10px;
+}
+
+.menu-item p.price {
+  font-weight: bold;
+  color: #28a745;
+}
