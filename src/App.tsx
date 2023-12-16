@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
-import PrivateRoute from './components/PrivateRoute';
+
 
 const App: React.FC = () => {
   return (
