@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
   }, []); // O array vazio como segundo argumento garante que o efeito é executado apenas uma vez, equivalente ao componentDidMount
 
   return (
-    <div className="container">
+    <div className="container-home">
       <h2>Welcome to our Fast Food Catalog</h2>
       <div className="menu">
         {menuItems.map((item, index) => (

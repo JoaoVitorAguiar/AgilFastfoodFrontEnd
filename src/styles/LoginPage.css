@@ -57,10 +57,10 @@
   margin-top: 10px;
 }
 
-.register {
+.login-container .register {
   padding-left: 20px;
 }
 
-.register a {
+.login-container .register a {
   text-decoration: none;
 }
