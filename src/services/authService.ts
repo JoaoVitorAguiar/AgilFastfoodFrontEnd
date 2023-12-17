@@ -52,9 +52,7 @@ export const register = async (data: RegisterData) => {
       if (!data.fullName || !data.email || !data.password || !data.password_confirmation) {
         throw new Error('Todos os campos são obrigatórios.');
       }
-      console.log(data)
       const response = await http.post('/users/create', data); // Usar o serviço http aqui
-      
       return response.data;
     } catch (error) {
       // Se houver um erro, rejeitar a promessa para que a chamada de registro possa lidar com isso

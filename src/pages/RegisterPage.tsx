@@ -16,7 +16,8 @@ const RegisterPage: React.FC = () => {
     logoutBeforeRegister();
   }, []);
 
-  const handleRegister = async () => {
+  const handleRegister = async (event: React.MouseEvent) => {
+    event.preventDefault(); // Previne o envio do formulário
     try {
       if (password !== passwordConfirmation) {
         setError('As senhas não coincidem.');
@@ -32,13 +33,12 @@ const RegisterPage: React.FC = () => {
   
       setError(null);
       setSuccess(true);
-      history.push("/login")
+      history.push('/login')
     } catch (error) {
       console.error('Erro de registro', error);
       setError('Erro ao registrar. Por favor, verifique suas credenciais.');
     }
   };
-
 
   return (
     <div className="login-container">
