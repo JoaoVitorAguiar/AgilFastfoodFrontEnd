@@ -5,6 +5,7 @@ import '../styles/HomePage.css'
 import axios from 'axios';
 
 interface Food {
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -12,7 +13,6 @@ interface Food {
 
 const HomePage: React.FC = () => {
   const [menuItems, setMenuItems] = useState<Food[]>([]);
-
   useEffect(() => {
     // Faz a requisição à API quando o componente é montado
     axios.get('http://localhost:3333/foods/list')
@@ -26,11 +26,10 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container-home">
-      <h2>Welcome to our Fast Food Catalog</h2>
       <div className="menu">
-        {menuItems.map((item, index) => (
-          <div key={index} className="menu-item">
-            <MenuItem {...item} />
+        {menuItems.map((item) => (
+          <div key={item.id} className="menu-item">
+            <MenuItem item={item} />
           </div>
         ))}
       </div>

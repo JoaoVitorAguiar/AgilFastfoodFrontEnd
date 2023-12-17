@@ -5,6 +5,8 @@ import NavBar from './components/NavBar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
+
 
 
 const App: React.FC = () => {
@@ -14,6 +16,7 @@ const App: React.FC = () => {
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/cart" component={CartPage} /> 
         <Route path="/" component={HomePage} />
       </Switch>
     </Router>

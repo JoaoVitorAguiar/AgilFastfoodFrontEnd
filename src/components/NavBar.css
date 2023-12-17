@@ -22,13 +22,13 @@
 
 .navbar ul p {
   display: block;
-
+  font-size: 0.7rem;
 }
 
 .navbar-item {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2em;
+  
   transition: color 0.3s ease;
 }
 
@@ -44,11 +44,12 @@ button {
   background-color: #0f3460;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 7px 14px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
   transition: background-color 0.3s ease;
   cursor: pointer;
   border-radius: 1rem;
@@ -56,4 +57,20 @@ button {
 
 button:hover {
   background-color: #e94560;
+}
+
+.cart button{
+  background-color: #1a1a2e;
+  padding: 5px 10px;
+}
+.cart button:hover{
+  background-color: #40de408b;
+}
+
+.cart img {
+  width: 1rem;
+}
+
+.cart p {
+  margin-top: 0.5rem;
 }

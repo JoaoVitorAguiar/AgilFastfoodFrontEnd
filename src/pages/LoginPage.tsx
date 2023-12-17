@@ -19,7 +19,6 @@ const LoginPage: React.FC = () => {
 
       // Redirecione para a página inicial ou outra página desejada após o login
       history.push('/');
-      window.location.reload(); 
     } catch (error) {
       console.error('Erro de login', error);
       setError('Erro ao realizar o login. Verifique suas credenciais.');
