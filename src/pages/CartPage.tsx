@@ -11,7 +11,7 @@ const CartPage: React.FC = () => {
     // Lógica para finalizar o pedido (pode ser redirecionamento para uma página de checkout)
     console.log('Pedido finalizado!');
   };
-
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="CartContainer">
@@ -36,6 +36,7 @@ const CartPage: React.FC = () => {
               </li>
             ))}
           </ul>
+          <p className="TotalPrice">{`Preço total: $${totalPrice.toFixed(2)}`}</p>
           {isAuthenticated() ? (
             <button className="CheckoutButton" onClick={handleCheckout}>Finalizar Pedido</button>
           ) : (
