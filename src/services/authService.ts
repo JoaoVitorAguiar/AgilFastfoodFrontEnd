@@ -14,6 +14,15 @@ interface RegisterData {
   email: string;
   password: string;
   password_confirmation: string;
+  cpf: string;
+  phone: string;
+  zipCode: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  address: string;
+  number: string;
+  complement: string;
 }
 
 interface UserData {
@@ -47,22 +56,22 @@ export const logout = () => {
 };
 
 export const register = async (data: RegisterData) => {
-    try {
-      // Validar campos obrigatórios
-      if (!data.fullName || !data.email || !data.password || !data.password_confirmation) {
-        throw new Error('Todos os campos são obrigatórios.');
-      }
-      const response = await http.post('/users/create', data); // Usar o serviço http aqui
-      return response.data;
-    } catch (error) {
-      // Se houver um erro, rejeitar a promessa para que a chamada de registro possa lidar com isso
-      if (axios.isAxiosError(error) && error.response) {
-        console.log(error)
-        return Promise.reject(error.response.data);
-      } else {
-        return Promise.reject('Erro desconhecido');
-      }
+  try {
+    // Validar campos obrigatórios
+    if (!data.fullName || !data.email || !data.password || !data.password_confirmation || !data.cpf || !data.phone || !data.zipCode || !data.state || !data.city || !data.neighborhood || !data.address || !data.number || !data.complement) {
+      throw new Error('Todos os campos são obrigatórios.');
     }
+    const response = await http.post('/users/create', data); // Usar o serviço http aqui
+    return response.data;
+  } catch (error) {
+    // Se houver um erro, rejeitar a promessa para que a chamada de registro possa lidar com isso
+    if (axios.isAxiosError(error) && error.response) {
+      console.log(error)
+      return Promise.reject(error.response.data);
+    } else {
+      return Promise.reject('Erro desconhecido');
+    }
+  }
 };
   
 
