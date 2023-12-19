@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import '../styles/HomePage.css'
 import axios from 'axios';
+import http from '../services/httpService';
 
 interface Food {
   id: string;
@@ -14,15 +15,14 @@ interface Food {
 const HomePage: React.FC = () => {
   const [menuItems, setMenuItems] = useState<Food[]>([]);
   useEffect(() => {
-    // Faz a requisição à API quando o componente é montado
-    axios.get('http://localhost:3333/foods/list')
+    http.get('/foods/list')
       .then(response => {
         setMenuItems(response.data);
       })
       .catch(error => {
         console.error('Erro ao obter lista de alimentos:', error);
       });
-  }, []); // O array vazio como segundo argumento garante que o efeito é executado apenas uma vez, equivalente ao componentDidMount
+  }, []);
 
   return (
     <div className="container-home">

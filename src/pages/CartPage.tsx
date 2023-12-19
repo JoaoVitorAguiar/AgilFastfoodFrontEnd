@@ -72,15 +72,15 @@ const CartPage: React.FC = () => {
             {cartItems.map((item) => (
               <li className="CartItem" key={item.id}>
                 <span>{item.name}</span>
-                <span>{`$${item.price.toFixed(2)}`}</span>
+                <span>{`R$ ${item.price.toFixed(2)}`}</span>
                 <div className="QuantityContainer">
-                  <span>{`Quantity: ${item.quantity}`}</span>
+                  <span>{`Quantidade: ${item.quantity}`}</span>
                   <div className='QuantityButtonContainer'>
                     <button className="QuantityButton decrement" onClick={() => decrementQuantity(item.id)}>-</button>
                     <button className="QuantityButton increment" onClick={() => incrementQuantity(item.id)}>+</button>
                   </div>
                 </div>
-                <button className="RemoveButton" onClick={() => removeFromCart(item.id)}>Remove</button>
+                <button className="RemoveButton" onClick={() => removeFromCart(item.id)}>Remover</button>
               </li>
             ))}
           </ul>
@@ -88,11 +88,14 @@ const CartPage: React.FC = () => {
           {isAuthenticated() ? (
             <button className="CheckoutButton" onClick={handleCheckout}>Finalizar Pedido</button>
           ) : (
-            <Link to="/login">
-              <button className="LoginButton">Entrar</button>
-            </Link>
+            <p className='EnterTofinalize'>
+              Entre para finalizar o pedido
+              <Link to="/login">
+                <button className="LoginButton">Entrar</button>
+              </Link>
+            </p>
           )}
-          <button className="ClearCartButton" onClick={clearCart}>Clear Cart</button>
+          <button className="ClearCartButton" onClick={clearCart}>Esvaziar carrinho</button>
         </>
       )}
     </div>

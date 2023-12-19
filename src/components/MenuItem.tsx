@@ -1,14 +1,13 @@
-// MenuItem.tsx
 import React from 'react';
 import { useCart, FoodItem } from '../contexts/CartContext';
 
 interface MenuItemProps {
-  item: FoodItem; // Altere as props para receber um item inteiro em vez de propriedades individuais
+  item: FoodItem; 
 }
 const MenuItem: React.FC<MenuItemProps> = ({ item}) => {
-  const { addToCart } = useCart(); // Use o hook useCart para obter a função addToCart
+  const { addToCart } = useCart(); 
   return (
-    <div>
+    <div className='menu-item-content'>
       <h3>{item.name}</h3>
       <p>{item.description}</p>
       <p>Price: ${item.price.toFixed(2)}</p>
