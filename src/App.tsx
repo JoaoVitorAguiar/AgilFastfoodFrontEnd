@@ -7,6 +7,8 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
+import Footer from './components/Footer';
+import './App.css';
 
 
 
@@ -21,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/order-history" component={OrderHistoryPage} />
         <Route path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </Router>
   );
 };
