@@ -1,24 +1,51 @@
 // src/components/NavBar.tsx
 import React, { useEffect, useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { logout, getUser, isAuthenticated } from '../services/authService';
+import { logout, getUser, isAuthenticated, getToken } from '../services/authService';
 import logo from '../img/logo.png'
 import cartIcon from '../img/cart-icon.png'
 import './NavBar.css'
 import { useCart } from '../contexts/CartContext';
 import { useUser } from '../contexts/UserContext';
+import http from '../services/httpService';
 
 
 const NavBar: React.FC = () => {
   const history = useHistory();
   const { user, setUser } = useUser();
   const { cartItems } = useCart();
+  const [hasOrders, setHasOrders] = useState(false);
   // Calcula a quantidade total de itens no carrinho
+  useEffect(() => {
+    const checkUserOrders = async () => {
+      try {
+        const token = getToken();
+
+        if (token && isAuthenticated()) {
+          const response = await http.get('/orders', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          if (response.status === 200 && response.data.length > 0) {
+            setHasOrders(true);
+          }
+        }
+      } catch (error) {
+        console.error('Erro ao verificar pedidos do usuário:', error);
+      }
+    };
+
+    checkUserOrders();
+  },[user]); 
+
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const handleLogout = () => {
     logout();
     setUser(null);
+    setHasOrders(false)
     history.push('/login');
   };
 
@@ -30,7 +57,10 @@ const NavBar: React.FC = () => {
             <img src={logo} alt="Logo" />
           </Link>
         </li>
-        <li>
+        <li className='functionalities'>
+          {hasOrders && (
+              <Link to="/order-history">Pedidos</Link>
+          )}
           {cartItems.length > 0 && (
             <Link to="/cart" className='cart'>
               <button>
@@ -41,7 +71,7 @@ const NavBar: React.FC = () => {
           )}
           {isAuthenticated() ? (
             <>
-              <p>Olá, {user}!</p>
+              <p>Olá, {user?.split(" ", 1)}!</p>
               <button onClick={handleLogout}>Sair</button>
             </>
           ) : (

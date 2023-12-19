@@ -74,3 +74,15 @@ button:hover {
 .cart p {
   margin-top: 0.5rem;
 }
+
+.functionalities {
+  width: 300px;
+}
+
+.functionalities a {
+  color: #fff;
+}
+.functionalities a:hover {
+  transition: 150ms;
+  color: #e94560;
+}
