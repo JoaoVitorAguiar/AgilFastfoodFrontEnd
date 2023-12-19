@@ -53,6 +53,7 @@ export const logout = () => {
   // Limpe as informações de autenticação e do usuário (por exemplo, remova o token e o usuário do armazenamento local)
   localStorage.removeItem('token');
   localStorage.removeItem('user');
+  window.location.reload()
 };
 
 export const register = async (data: RegisterData) => {

@@ -8,14 +8,17 @@ const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { setUser } = useUser(); 
+  const { setUser, setIsAdmin } = useUser(); 
   const history = useHistory();
 
   const handleLogin = async () => {
     try {
-      const { token, user } = await login({ email, password });
+      const { token, user, isAdmin } = await login({ email, password });
       localStorage.setItem('token', token);
-      setUser(user); // Atualize o estado do usuário no contexto
+      setUser(user); // Atualizando o estado do usuário no contexto (nome)
+      if(isAdmin){
+        setIsAdmin(true)
+      }
       history.push('/');
     } catch (error) {
       console.error('Erro de login', error);
