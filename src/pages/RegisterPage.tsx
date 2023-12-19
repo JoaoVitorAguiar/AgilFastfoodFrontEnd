@@ -3,6 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { logoutBeforeRegister, register } from '../services/authService';
 import InputMask from 'react-input-mask';
 import '../styles/RegisterPage.css';
+import axios from 'axios';
 
 const RegisterPage: React.FC = () => {
   const [fullName, setFullName] = useState('');
@@ -53,9 +54,45 @@ const RegisterPage: React.FC = () => {
       setError(null);
       setSuccess(true);
       history.push('/login')
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erro de registro', error);
-      setError('Erro ao registrar. Por favor, verifique suas credenciais.');
+  
+      if (error.response) {
+        if (error.response.status === 409) {
+          if(error.message === 'User already registered'){
+            setError('Email já cadastrado.');
+          }
+          if(error.message === 'CPF already registered'){
+            setError('CPF já cadastrado.');
+            alert('CPF já cadastrado.');
+          }
+          //alert('CPF já cadastrado.');
+        } else {
+          setError(`Erro ao registrar. Código de status: ${error.response.status}`);
+        }
+      } else {
+        console.log(error.response);
+        setError('Erro ao registrar. Por favor, verifique suas credenciais.');
+      }
+    }
+    
+  };
+
+  const handleCepChange = async (e: any) => {
+    setZipCode(e.target.value);
+  
+    if (e.target.value.length === 9) { // Verifica se o CEP tem 9 caracteres (incluindo o '-')
+      try {
+        const response = await axios.get(`https://viacep.com.br/ws/${e.target.value}/json/`);
+        const { logradouro, bairro, localidade, uf } = response.data;
+  
+        setAddress(logradouro);
+        setNeighborhood(bairro);
+        setCity(localidade);
+        setState(uf);
+      } catch (error) {
+        console.error('Erro ao buscar CEP', error);
+      }
     }
   };
 
@@ -98,7 +135,7 @@ const RegisterPage: React.FC = () => {
            <InputMask
             mask="99999-999"
             value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
+            onChange={handleCepChange}
             placeholder="CEP"
           />
           </div>
