@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 
 
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/cart" component={CartPage} /> 
+        <Route path="/order-history" component={OrderHistoryPage} />
         <Route path="/" component={HomePage} />
       </Switch>
     </Router>

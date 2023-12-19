@@ -1,0 +1,58 @@
+.OrderHistoryContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.Title {
+    margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  color: #444;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.OrderList {
+  list-style: none;
+  padding: 0;
+}
+
+.OrderItem {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.OrderList ul {
+    list-style-type: none;
+}
+
+.OrderDetails {
+  flex: 1;
+}
+
+.OrderActions {
+  display: flex;
+  align-items: center;
+}
+
+.OrderActions button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.OrderActions button:hover {
+  background-color: #0056b3;
+}
