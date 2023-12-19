@@ -1,21 +1,19 @@
-// src/components/NavBar.tsx
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { logout, getUser, isAuthenticated, getToken } from '../services/authService';
-import logo from '../img/logo.png'
+import { logout, isAuthenticated, getToken } from '../services/authService';
+import logo from '../img/logo.png';
 import cartIcon from '../img/cart-icon.png'
-import './NavBar.css'
+import './NavBar.css';
 import { useCart } from '../contexts/CartContext';
 import { useUser } from '../contexts/UserContext';
 import http from '../services/httpService';
 
-
 const NavBar: React.FC = () => {
   const history = useHistory();
-  const { user, setUser } = useUser();
+  const { user, setUser, isAdmin } = useUser();
   const { cartItems } = useCart();
   const [hasOrders, setHasOrders] = useState(false);
-  // Calcula a quantidade total de itens no carrinho
+
   useEffect(() => {
     const checkUserOrders = async () => {
       try {
@@ -38,31 +36,29 @@ const NavBar: React.FC = () => {
     };
 
     checkUserOrders();
-  },[user]); 
-
-  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+  }, [user]);
 
   const handleLogout = () => {
     logout();
     setUser(null);
-    setHasOrders(false)
+    setHasOrders(false);
     history.push('/login');
   };
 
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <nav className='navbar'>
+    <nav className="navbar">
       <ul>
-        <li className='logo'>
+        <li className="logo">
           <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
         </li>
-        <li className='functionalities'>
-          {hasOrders && (
-              <Link to="/order-history">Pedidos</Link>
-          )}
-          {cartItems.length > 0 && (
-            <Link to="/cart" className='cart'>
+        <li className="functionalities">
+          {!isAdmin && hasOrders && <Link to="/order-history">Pedidos</Link>}
+          {!isAdmin && cartItems.length > 0 && (
+            <Link to="/cart" className="cart">
               <button>
                 <img src={cartIcon} alt="carrinho" />
                 <p>({totalQuantity})</p>
@@ -71,7 +67,7 @@ const NavBar: React.FC = () => {
           )}
           {isAuthenticated() ? (
             <>
-              <p>Olá, {user?.split(" ", 1)}!</p>
+              <p>Olá, {user?.split(' ', 1)}!</p>
               <button onClick={handleLogout}>Sair</button>
             </>
           ) : (

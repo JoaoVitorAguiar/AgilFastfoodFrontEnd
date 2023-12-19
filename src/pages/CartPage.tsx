@@ -5,10 +5,12 @@ import '../styles/CartPage.css';
 import { isAuthenticated, getToken } from '../services/authService';
 import http from '../services/httpService';  // Importe o serviço HTTP
 import { Link, Redirect } from 'react-router-dom';
+import Price from '../components/Price';
 
 const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, clearCart, incrementQuantity, decrementQuantity } = useCart();
   const [checkoutSuccess, setCheckoutSuccess] = useState(false); // Novo estado para controlar a exibição da mensagem
+  const [sliderValue, setSliderValue] = useState(50); // Novo estado para o valor do controle deslizante
 
   const handleCheckout = async () => {
     try {
@@ -72,7 +74,7 @@ const CartPage: React.FC = () => {
             {cartItems.map((item) => (
               <li className="CartItem" key={item.id}>
                 <span>{item.name}</span>
-                <span>{`R$ ${item.price.toFixed(2)}`}</span>
+                <Price value={item.price} />
                 <div className="QuantityContainer">
                   <span>{`Quantidade: ${item.quantity}`}</span>
                   <div className='QuantityButtonContainer'>
@@ -84,7 +86,7 @@ const CartPage: React.FC = () => {
               </li>
             ))}
           </ul>
-          <p className="TotalPrice">{`Preço total: $${totalPrice.toFixed(2)}`}</p>
+          <p className="TotalPrice">Preço total: <Price value={totalPrice} /></p>
           {isAuthenticated() ? (
             <button className="CheckoutButton" onClick={handleCheckout}>Finalizar Pedido</button>
           ) : (
