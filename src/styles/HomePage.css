@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 3rem;
-  padding: 1rem 7rem;
+  padding: 0rem 7rem;
   margin-bottom: 6rem;
 }
 
@@ -61,18 +61,18 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.container-home p, span {
+.container-home .menu .menu-item p, span {
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
 }
 
-.container-home .menu-item .addToCard {
+.container-home .menu .menu-item button {
   margin-top: auto;
   color: #ffffff;
   background-color: #007bff;
 }
   
-.container-home .menu-item button:hover {
+.container-home .menu-item  button:hover {
   background-color: #3ada40;
 }

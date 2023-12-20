@@ -1,4 +1,3 @@
-// src/pages/HomePage.tsx
 import React, { useEffect, useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import '../styles/HomePage.css'
@@ -26,7 +25,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container-home">
-      <h2>Menu</h2>
+      <h2>Cardápio</h2>
       <div className="menu">
         {menuItems.map((item) => (
           <MenuItem key={item.id} item={item} imgUrl={item.imgUrl} />

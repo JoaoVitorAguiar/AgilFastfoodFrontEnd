@@ -10,7 +10,7 @@
     margin-top: 2rem;
   font-size: 2rem;
   text-align: center;
-  color: #444;
+  color: #000000;
   margin-bottom: 1rem;
   font-weight: bold;
 }
@@ -56,4 +56,9 @@
 
 .OrderActions button:hover {
   background-color: #0056b3;
+}
+
+.OrderDetails span{
+  color: #000000;
+  text-shadow: none;
 }
