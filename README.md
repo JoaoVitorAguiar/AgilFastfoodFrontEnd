@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Documentação do Aplicativo React de Pedidos - Agil Fast Food
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introdução
+O "Agil Fast Food" é um sistema de pedidos onde os usuários podem adicionar lanches no carrinho, fazer pedidos, se registrar e fazer login. Os usuários com privilégios de administrador podem adicionar mais pedidos. Além disso, os usuários podem visualizar seu histórico de pedidos.
 
-## Available Scripts
+## Clonando o Projeto
 
-In the project directory, you can run:
+1. Abra o terminal no diretório onde deseja clonar o projeto.
+2. Execute o comando `git clone https://github.com/JoaoVitorAguiar/AgilFastfoodFrontEnd`
 
-### `npm start`
+## Configuração do Ambiente
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Navegue até o diretório do projeto com `cd AgilFastfoodFrontEnd` .
+2. Execute `yarn` para instalar todas as dependências do projeto listadas no arquivo `package.json`.
+3. Inicie o servidor de desenvolvimento com `npm run dev`. Seu aplicativo agora deve estar rodando em `http://localhost:3000`.
+4. Inicie o aplicativo com `yarn start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## API Consumida
 
-### `npm test`
+A Api consumida pode ser encontrada em: https://github.com/JoaoVitorAguiar/AgilFastfoodBackEnd
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Estrutura do Projeto
+O projeto é estruturado da seguinte forma:
+- `index.js`: Este é o ponto de entrada do aplicativo. Ele envolve o componente App com os provedores de contexto do usuário e do carrinho.
+- `App.js`: Este é o componente principal do aplicativo. Ele define as rotas do aplicativo e renderiza os componentes correspondentes.
+- `UserContext.js`: Este arquivo define o contexto do usuário e fornece funções para atualizar o estado do usuário.
+- `CartContext.js`: Este arquivo define o contexto do carrinho e fornece funções para manipular o carrinho de compras.
+- `httpService.ts`: Este arquivo define um serviço HTTP para fazer requisições à API. Ele inclui um interceptor que adiciona um token de autenticação ao cabeçalho de cada requisição.
+- `authService.ts`: Este arquivo define funções para autenticação e registro de usuários. Ele também inclui funções para obter o usuário atual e verificar se o usuário está autenticado.
 
-### `npm run build`
+## Conexão com a API
+Detalhes sobre como o aplicativo se conecta à API. Isso envolve a criação de um serviço usando o Axios, que faz requisições HTTP para a API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Componentes
+Descrição de cada componente React no aplicativo, incluindo seu estado e props. Os componentes incluem:
+- `NavBar`: A barra de navegação no topo do aplicativo.
+- `LoginPage`: A página de login.
+- `RegisterPage`: A página de registro.
+- `HomePage`: A página inicial.
+- `CartPage`: A página do carrinho de compras.
+- `OrderHistoryPage`: A página do histórico de pedidos.
+- `AdminPage`: A página do administrador.
+- `Footer`: O rodapé do aplicativo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Fluxo de Dados
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O sistema inicia na página inicial onde se encontram vários lanches. Por meio de uma interface simples, o usuário pode adicionar os lanches de sua preferência no seu carrinho. Ele só pode finalizar o pedido se estiver autenticado, por isso é redirecionado para o login. Caso ele não possua registro no sistema, ele pode se cadastrar. Ao se registrar ou fazer login no site e, posteriormente, finalizar seu pedido, ele pode verificar seu histórico de pedidos em um link que aparece como *Pedidos* na barra de navegação.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
