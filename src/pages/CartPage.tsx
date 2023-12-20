@@ -1,4 +1,3 @@
-// src/pages/CartPage.tsx
 import React, { useState } from 'react';
 import { useCart } from '../contexts/CartContext';
 import '../styles/CartPage.css';
@@ -9,40 +8,34 @@ import Price from '../components/Price';
 
 const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, clearCart, incrementQuantity, decrementQuantity } = useCart();
-  const [checkoutSuccess, setCheckoutSuccess] = useState(false); // Novo estado para controlar a exibição da mensagem
-  const [sliderValue, setSliderValue] = useState(50); // Novo estado para o valor do controle deslizante
+  const [checkoutSuccess, setCheckoutSuccess] = useState(false); 
 
   const handleCheckout = async () => {
     try {
       const token = getToken();
 
       if (!token) {
-        // Trate o caso em que o token não está presente (usuário não autenticado)
         console.error('Usuário não autenticado');
         return;
       }
 
-      // Construa a lista de itens para o pedido
+      // Lista de itens para o pedido
       const orderItems = cartItems.map(item => ({
         foodId: item.id,
         quantity: item.quantity,
       }));
 
-      // Crie a solicitação para finalizar o pedido usando o serviço HTTP
+      // Requisição para finalizar o pedido usando o serviço HTTP
       const response = await http.post('/orders', {
         foods: orderItems,
-        // Outros campos do pedido, se necessário
       });
 
       if (response.status === 200) {
         console.log('Pedido finalizado com sucesso!');
-        // Atualize o estado para exibir a mensagem
         clearCart();
         setCheckoutSuccess(true);
-        // Pode adicionar lógica adicional aqui, se necessário
       } else {
         console.error('Erro ao finalizar o pedido:', response.statusText);
-        // Trate o erro de acordo (pode ser exibindo uma mensagem para o usuário, etc.)
       }
     } catch (error) {
       console.error('Erro ao finalizar o pedido:', error);

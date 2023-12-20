@@ -7,23 +7,22 @@
     margin-bottom: 4rem;
   }
   
-  .Title {
-    font-size: 2.5rem;
+  .CartContainer .Title {
     color: #333;
   }
   
-  .EmptyCartMessage {
+  .CartContainer .EmptyCartMessage {
     font-size: 1.2rem;
     color: #777;
   }
   
-  .CartList {
+  .CartContainer  .CartList {
     width: 20%;
     list-style: none;
     padding: 0;
   }
   
-  .CartItem {
+  .CartContainer  .CartItem {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,7 +33,12 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Adicionado sombra */
   }
   
-  .RemoveButton {
+  .CartContainer .CartItem span {
+    color: #000;
+    text-shadow: none
+  }
+  
+  .CartContainer  .RemoveButton {
     background-color: #f44336;
     color: white;
     border: none;
@@ -43,7 +47,7 @@
     cursor: pointer;
   }
   
-  .ClearCartButton {
+  .CartContainer   .ClearCartButton {
     background-color: #4caf50;
     color: white;
     border: none;
@@ -54,31 +58,31 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Adicionado sombra */
   }
   
-  .QuantityContainer{
+  .CartContainer .QuantityContainer{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
   }
 
-  .QuantityButtonContainer{
+  .CartContainer  .QuantityButtonContainer{
     display: flex;
     gap: 1rem;
   }
 
-  .QuantityButton {
+  .CartContainer .QuantityButton {
     padding: .1rem .4rem;
     border-radius: 5px;
   }
 
-  .increment:hover {
+  .CartContainer .increment:hover {
     background-color: #f44336;
   }
-  .increment:hover {
+  .CartContainer .increment:hover {
     background-color: #4caf50;
   }
 
-  .CheckoutSuccessContainer {
+ .CheckoutSuccessContainer {
     border: 1px solid rgba(0, 0, 0, 0.259);
     width: 30%;
     margin: 0 auto;
@@ -92,21 +96,26 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
-  .CheckoutSuccessContainer button {
+ .CheckoutSuccessContainer button {
     margin-top: 1rem;
     background-color: #4caf50;
   }
 
-  .CheckoutSuccessContainer button:hover {
+ .CheckoutSuccessContainer button:hover {
     margin-top: 1rem;
     background-color: #3ada40;
   }
 
-  .TotalPrice{
+  .CartContainer  .TotalPrice{
     margin-bottom: 10px;
   }
 
-  .EnterTofinalize {
+  .CartContainer .TotalPrice span {
+    color: #000;
+    text-shadow: none;
+  }
+
+  .CartContainer  .EnterTofinalize {
     display: flex;
     align-items: center;
     justify-content: space-between;

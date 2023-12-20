@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import http from '../services/httpService';
 import { isAuthenticated, getToken } from '../services/authService';
 import '../styles/OrderHistoryPage.css';
+import Price from '../components/Price';
 
 interface Order {
   id: string;
@@ -109,17 +110,12 @@ const OrderHistoryPage: React.FC = () => {
                   {order.foods.map((foodItem) => (
                     <li key={foodItem.foodId}>
                         <strong>{`- ${foodItem.food.name}`}</strong>
-                      {`, Quantidade: ${foodItem.quantity}, $${(
-                        foodItem.food.price 
-                      ).toFixed(2)}`}
+                      {`, Quantidade: ${foodItem.quantity}, `}
+                      <Price value={foodItem.food.price} />
                     </li>
                   ))}
                 </ul>
-                <p><strong>Total: </strong>{`$${order.foods.reduce(
-                  (total, foodItem) => total + foodItem.food.price * foodItem.quantity,
-                  0
-                ).toFixed(2)}`}</p>
-                {/* Adicione mais detalhes do pedido conforme necessário */}
+                <p><strong>Total: </strong> <Price value={order.foods.reduce((total, foodItem) => total + foodItem.food.price * foodItem.quantity, 0)} /></p>
               </div>
             </li>
           ))}
