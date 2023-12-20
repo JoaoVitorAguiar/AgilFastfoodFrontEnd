@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
     };
 
     checkUserOrders();
-  }, [user]);
+  }, [user, cartItems]);
 
   const handleLogout = () => {
     logout();
