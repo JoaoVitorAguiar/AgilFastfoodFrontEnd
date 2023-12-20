@@ -1,5 +1,6 @@
 # Documentação do Aplicativo React de Pedidos - Agil Fast Food
 
+
 ## Introdução
 O "Agil Fast Food" é um sistema de pedidos onde os usuários podem adicionar lanches no carrinho, fazer pedidos, se registrar e fazer login. Os usuários com privilégios de administrador podem adicionar mais pedidos. Além disso, os usuários podem visualizar seu histórico de pedidos.
 
