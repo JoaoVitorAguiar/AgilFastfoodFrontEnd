@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import MenuItem from '../components/MenuItem';
 import '../styles/HomePage.css'
-import axios from 'axios';
 import http from '../services/httpService';
 
 interface Food {
@@ -10,6 +9,7 @@ interface Food {
   name: string;
   description: string;
   price: number;
+  imgUrl: string;
 }
 
 const HomePage: React.FC = () => {
@@ -26,11 +26,10 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container-home">
+      <h2>Menu</h2>
       <div className="menu">
         {menuItems.map((item) => (
-          <div key={item.id} className="menu-item">
-            <MenuItem item={item} />
-          </div>
+          <MenuItem key={item.id} item={item} imgUrl={item.imgUrl} />
         ))}
       </div>
     </div>

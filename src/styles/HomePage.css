@@ -8,7 +8,7 @@
 
 .container-home h2 {
   text-align: center;
-  color: #007bff;
+  color: #1a1a2e;
   margin-bottom: 20px;
 }
 
@@ -19,37 +19,60 @@
 }
 
 .container-home .menu-item {
-  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #ddd;
   height: 10rem;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border-radius: 8px;
   padding: 1rem;
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
 }
-  .container-home h3 {
-    color: #007bff;
-  }
 
-  .container-home p {
-    margin-bottom: 0.5rem;
-  }
+.container-home .menu-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -2;
+}
 
-  .container-home .menu-item .addToCard {
-    margin-top: auto;
-  }
+.container-home .menu-item > * {
+  position: relative;
+  z-index: -1;
+}
 
-  .container-home .menu-item .menu-item-content{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.container-home .menu-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container-home h3 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container-home p, span {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.container-home .menu-item .addToCard {
+  margin-top: auto;
+  color: #ffffff;
+  background-color: #007bff;
+}
   
-  .container-home .menu-item button:hover {
-    background-color: #3ada40;
-  }
-
+.container-home .menu-item button:hover {
+  background-color: #3ada40;
+}

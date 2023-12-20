@@ -6,10 +6,11 @@ const AdminPage: React.FC = () => {
   const [foodName, setFoodName] = useState('');
   const [foodDescription, setFoodDescription] = useState('');
   const [foodPrice, setFoodPrice] = useState('');
+  const [imgUrl, setImgUrl] = useState(''); 
 
   const handleAddFood = async () => {
     // Verifica se todos os campos estão preenchidos
-    if (!foodName || !foodDescription || !foodPrice) {
+    if (!foodName || !foodDescription || !foodPrice || !imgUrl) { 
       alert("Por favor, preencha todos os campos.");
       return;
     }
@@ -25,7 +26,8 @@ const AdminPage: React.FC = () => {
       const response = await http.post('/foods/create', {
         name: foodName,
         description: foodDescription,
-        price: price
+        price: price,
+        imgUrl: imgUrl 
       });
   
       if (response.status === 200) {
@@ -42,6 +44,7 @@ const AdminPage: React.FC = () => {
     setFoodName('');
     setFoodDescription('');
     setFoodPrice('');
+    setImgUrl(''); 
   };
   return (
     <div className="admin-page">
@@ -54,6 +57,8 @@ const AdminPage: React.FC = () => {
         <input required type="text" value={foodDescription} onChange={(e) => setFoodDescription(e.target.value)} placeholder='Descrição da lanche' />
        
         <input required type="number" value={foodPrice} onChange={(e) => setFoodPrice(e.target.value)} placeholder='Preço' />
+
+        <input required type="text" value={imgUrl} onChange={(e) => setImgUrl(e.target.value)} placeholder='URL da Imagem' /> 
 
         <button onClick={handleAddFood}>Adicionar lanche</button>
       </div>

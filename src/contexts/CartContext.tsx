@@ -18,6 +18,7 @@ export interface FoodItem {
   name: string;
   description: string;
   price: number;
+  imgUrl: string;
 }
 
 interface CartItem extends FoodItem {
