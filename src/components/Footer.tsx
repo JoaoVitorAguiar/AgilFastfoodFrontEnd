@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <a href="#contact">Contato</a>
       </div>
       <div>
-        © 2023 Alan Araújo Engenharia de Telecomunicações
+        © 2023 UX Software - Todos os direitos reservados
       </div>
 </footer>
   );
